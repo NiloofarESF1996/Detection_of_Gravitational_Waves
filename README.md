@@ -10,9 +10,14 @@ The goal is to develop a systematic approach for detecting gravitational waves f
 
 ## Methodology
 
-### 1. Data Simulation
-- **2000 samples** of gravitational wave time-series were simulated, each representing a non-spinning binary black hole coalescing event.
-- **Systematic noise** was also simulated for 2000 samples, creating a balanced dataset for classification.
+### 1. Data Simulation with PyCBC
+We used the **[PyCBC](https://pycbc.org/)** package to simulate gravitational waveforms from non-spinning binary black hole mergers. PyCBC is an open-source software package designed for the analysis of gravitational waves, and it provides tools for:
+
+- Generating gravitational wave signals from astrophysical sources (like binary black holes).
+- Filtering noisy data to search for gravitational wave signals.
+- Performing parameter estimation and waveform modeling.
+
+Using PyCBC, we simulated 2000 samples of gravitational wave time-series data, representing binary black hole coalescence, and generated an equal number of noise samples to balance the dataset.
 
 ### 2. Topological Data Analysis (TDA)
 - **Sliding Window Embedding**: We employed the sliding window method to convert the 1-dimensional time series into higher-dimensional feature spaces.
@@ -37,7 +42,7 @@ The goal is to develop a systematic approach for detecting gravitational waves f
 
 ## Notebooks
 
-- **sample_DataSet-TDA.ipynb**: Contains the code for data simulation and the process of generating Betti curves from the gravitational wave and noise data.
+- **sample_DataSet-TDA.ipynb**: Contains the code for data simulation (using PyCBC) and the process of generating Betti curves from the gravitational wave and noise data.
 - **ML_v5.ipynb**: Includes the machine learning model (SVM) used to classify the signals based on the topological features.
 
 ## Results
@@ -54,8 +59,6 @@ The project demonstrates that topological data analysis, when combined with mach
 ### Prerequisites:
 - Python 3.x
 - Libraries: `pandas`, `numpy`, `scikit-learn`, `gudhi` (for topological data analysis), `matplotlib`
-
-### Steps:
-1. Clone the repository:
+- **PyCBC**: Install PyCBC by running:
    ```bash
-   git clone https://github.com/your-username/gravitational-wave-detection.git
+   pip install pycbc
